@@ -1,5 +1,5 @@
 # https://adventofcode.com/2022/day/3
-# This problem takes advantage of Set operations (namely intersect)
+# This solution takes advantage of Set operations (namely intersect)
 
 lines = readlines("input.data")
 
@@ -18,7 +18,7 @@ println(iSoma)
 
 # Part 2 (each elf group is made of 3 lines of strings)
 iSoma2 = 0
-for i = 1:3:length(lines)
+for i in 1:3:length(lines)
   s1 = Set(lines[i])
   s2 = Set(lines[i+1])
   s3 = Set(lines[i+2])

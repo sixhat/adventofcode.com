@@ -19,13 +19,13 @@ function day7()
     if tok[1] == "\$"
       if tok[2] == "cd"
         if tok[3] == ".."
-					fp0 = join(sPath, ":")
+          fp0 = join(sPath, ":")
           pop!(sPath)
-					fp = join(sPath, ":")
+          fp = join(sPath, ":")
           dDirs[fp] += dDirs[fp0]
         else
           push!(sPath, tok[3])
-					fp = join(sPath, ":")
+          fp = join(sPath, ":")
           push!(dDirs, fp => 0)
         end
       end
@@ -37,27 +37,27 @@ function day7()
     end
     #println(join(sPath, ":"))
   end
-	# Accumulate the path
-	while length(sPath)>1 
-		outOff = join(sPath, ":")
-		pop!(sPath)
+  # Accumulate the path
+  while length(sPath) > 1
+    outOff = join(sPath, ":")
+    pop!(sPath)
     dDirs[join(sPath, ":")] += dDirs[outOff]
-	end
+  end
 
 
-	println(join(sPath, ":"))
+  println(join(sPath, ":"))
   sub100 = filter(p -> last(p) <= 100000, dDirs)
-	print("Part 1: ")
+  print("Part 1: ")
   println(sum(values(sub100)))
 
-	iFree =  70000000 - dDirs["/"]
-	target = 30000000
-	println("Total Size : ", dDirs["/"])
-	println("Total Free : ", iFree)
-	iNeeded = target - iFree
-	println("Total Needed : ", iNeeded)
-	vals = filter(p -> last(p) > iNeeded, dDirs)
-	println("Part 2: ",findmin(vals))
+  iFree = 70000000 - dDirs["/"]
+  target = 30000000
+  println("Total Size : ", dDirs["/"])
+  println("Total Free : ", iFree)
+  iNeeded = target - iFree
+  println("Total Needed : ", iNeeded)
+  vals = filter(p -> last(p) > iNeeded, dDirs)
+  println("Part 2: ", findmin(vals))
 end
 
 day7()

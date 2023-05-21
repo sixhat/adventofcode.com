@@ -1,18 +1,18 @@
 # https://adventofcode.com/2022/day/4
-# The description of part 1 clearly points to "issubset, intersect" from Sets. 
+# The problem clearly points to "issubset, intersect" from Sets. 
+# The solution uses a regex (could go with splits, but no fun there, right?)
 
 function day4()
   lines = readlines("input.data")
   iTotal = 0
   iTotal2 = 0
   for line in lines
-    sRanges = split(line, ",")
-    sLeft = split(sRanges[1], "-")
-    sRight = split(sRanges[2], "-")
-    iLeftLo = parse(Int, sLeft[1])
-    iLeftHi = parse(Int, sLeft[2])
-    iRightLo = parse(Int, sRight[1])
-    iRigthHi = parse(Int, sRight[2])
+		re = r"(\d+)-(\d+),(\d+)-(\d+)"
+		reMatch = match(re, line)		
+    iLeftLo = parse(Int, reMatch[1])
+    iLeftHi = parse(Int, reMatch[2])
+    iRightLo = parse(Int, reMatch[3])
+    iRigthHi = parse(Int, reMatch[4])
     # Create the two interavals as Sets.
     sL = Set(iLeftLo:iLeftHi)
     sR = Set(iRightLo:iRigthHi)

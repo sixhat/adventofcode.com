@@ -7,8 +7,8 @@ function day4()
   iTotal = 0
   iTotal2 = 0
   for line in lines
-		re = r"(\d+)-(\d+),(\d+)-(\d+)"
-		reMatch = match(re, line)		
+    re = r"(\d+)-(\d+),(\d+)-(\d+)"
+    reMatch = match(re, line)
     iLeftLo = parse(Int, reMatch[1])
     iLeftHi = parse(Int, reMatch[2])
     iRightLo = parse(Int, reMatch[3])

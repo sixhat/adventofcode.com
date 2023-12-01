@@ -1,7 +1,8 @@
 import re
+import os
 
 
-def processa_linha(linha: str)-> int:
+def processa_linha(linha: str) -> int:
     dezenas = 10000
     dval = 0
     unidades = -1
@@ -43,7 +44,7 @@ def processa_linha(linha: str)-> int:
     return 10 * dval + uval
 
 
-inpf = open("input", "r")
+inpf = open(os.path.dirname(os.path.realpath(__file__)) + "/input", "r")
 
 total = 0
 for line in inpf:

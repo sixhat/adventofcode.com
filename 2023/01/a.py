@@ -1,4 +1,5 @@
 import re
+import os
 
 
 def processa_linha(linha):
@@ -33,7 +34,7 @@ def processa_linha(linha):
     return 10 * dval + uval
 
 
-inpf = open("input", "r")
+inpf = open(os.path.dirname(os.path.realpath(__file__)) + "/input", "r")
 
 total = 0
 for line in inpf:

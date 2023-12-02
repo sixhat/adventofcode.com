@@ -1,9 +1,10 @@
 import os
 import re
+from typing import List
 # https://adventofcode.com/2023/day/2
 
 
-def processa_linha(linha):
+def processa_linha(linha: str) -> tuple[int, int, int, int]:
     # regex -find game number return games numbers possible <=r,g,b
     gn = re.compile("Game (\d+)")
     rer = re.compile("(\d+) red")
@@ -18,8 +19,8 @@ def processa_linha(linha):
     return game, red, green, blue
 
 
-def parte_a(data):
-    total = 0
+def parte_a(data: List[str]) -> None:
+    total: int = 0
     for linha in data:
         gn, red, green, blue = processa_linha(linha.strip())
         if red <= 12 and green <= 13 and blue <= 14:
@@ -27,16 +28,16 @@ def parte_a(data):
     print("-- Total parte A ", total)
 
 
-def parte_b(data):
-    total = 0
+def parte_b(data: List[str]) -> None:
+    total: int = 0
     for linha in data:
-        gn, red, green, blue = processa_linha(linha.strip())
+        _, red, green, blue = processa_linha(linha.strip())
         total += red * green * blue
     print("-- Total parte B ", total)
 
 
 inpf = open(os.path.dirname(os.path.realpath(__file__)) + "/input", "r")
-data = inpf.readlines()
+data: List[str] = inpf.readlines()
 inpf.close()
 
 parte_a(data)

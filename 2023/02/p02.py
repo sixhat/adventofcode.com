@@ -8,13 +8,12 @@ rer = re.compile("(\d+) red")
 reg = re.compile("(\d+) green")
 reb = re.compile("(\d+) blue")
 
-def processa_linha(linha: str) -> Tuple[int, int, int, int]:
 
+def processa_linha(linha: str) -> Tuple[int, int, int, int]:
     game = int(gn.findall(linha)[0])
     red = max([int(x) for x in rer.findall(linha)])
     green = max([int(x) for x in reg.findall(linha)])
     blue = max([int(x) for x in reb.findall(linha)])
-
     return game, red, green, blue
 
 

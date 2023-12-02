@@ -1,15 +1,14 @@
 import os
 import re
-from typing import List
+from typing import List, Tuple
 # https://adventofcode.com/2023/day/2
 
+gn = re.compile("Game (\d+)")
+rer = re.compile("(\d+) red")
+reg = re.compile("(\d+) green")
+reb = re.compile("(\d+) blue")
 
-def processa_linha(linha: str) -> tuple[int, int, int, int]:
-    # regex -find game number return games numbers possible <=r,g,b
-    gn = re.compile("Game (\d+)")
-    rer = re.compile("(\d+) red")
-    reg = re.compile("(\d+) green")
-    reb = re.compile("(\d+) blue")
+def processa_linha(linha: str) -> Tuple[int, int, int, int]:
 
     game = int(gn.findall(linha)[0])
     red = max([int(x) for x in rer.findall(linha)])

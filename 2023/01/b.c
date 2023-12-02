@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// #todo
 int main()
 {
     const char *file_name = "input";

@@ -1,2 +1,4 @@
-.DS_Store
+.gitignore
+.*
 2023/01/a.out
+

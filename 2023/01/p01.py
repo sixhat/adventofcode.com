@@ -19,7 +19,7 @@ def processa_linha(linha: str, nums) -> int:
     return 10 * dval + uval
 
 
-def parte_B():
+def parte_B(data):
     nums = [
         "0",
         "1",
@@ -42,15 +42,14 @@ def parte_B():
         "eight",
         "nine",
     ]
-    inpf = open(os.path.dirname(os.path.realpath(__file__)) + "/input", "r")
     total = 0
-    for line in inpf:
-        _a = processa_linha(line.strip(), nums)
+    for line in data:
+        _a = processa_linha(line, nums)
         total += _a
     print(total)
 
 
-def parte_A():
+def parte_A(data):
     nums = [
         "0",
         "1",
@@ -63,12 +62,18 @@ def parte_A():
         "8",
         "9",
     ]
-    inpf = open(os.path.dirname(os.path.realpath(__file__)) + "/input", "r")
     total = 0
-    for line in inpf:
-        _a = processa_linha(line.strip(), nums)
+    for line in data:
+        _a = processa_linha(line, nums)
         total += _a
     print(total)
 
-parte_A()
-parte_B()
+
+data: list[str] = (
+    open(os.path.dirname(os.path.realpath(__file__)) + "/input", "r")
+    .read()
+    .strip()
+    .split("\n")
+)
+parte_A(data)
+parte_B(data)

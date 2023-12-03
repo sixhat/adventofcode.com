@@ -21,7 +21,7 @@ def check_match(m: re.Match, y: int) -> int:
     ye = min(y + 2, d["y"])
     ns = ""
     for i in range(ys, ye):
-        ns += data[i][xs:xe].strip()
+        ns += data[i][xs:xe]
     nsv = ren.search(ns)
     if nsv is not None:
         return val

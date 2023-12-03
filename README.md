@@ -13,4 +13,4 @@ My tries in [Advent of code](https://adventofcode.com/) with the objective of ex
 
 This repo will not be updated often, and certainly not during the competitive part of the Advent of Code (read December).
 
-The quality of code will probalbly not be as good as someone could expect as I'm using this as a learning exercise. Don't take this repo as authoritative.
+The quality of code will probably not be as good as someone could expect as I'm using this as a learning exercise. Don't take this repo as authoritative.

@@ -90,10 +90,11 @@ def parte_b(data: list[str]) -> None:
     print("-- Total parte B\t", total_gear_ratios)
 
 
-inpf = open(os.path.dirname(os.path.realpath(__file__)) + "/input", "r")
-# inpf = open(os.path.dirname(os.path.realpath(__file__)) + "/demo", "r")
-data: list[str] = inpf.readlines()
-inpf.close()
-
+data: list[str] = (
+    open(os.path.dirname(os.path.realpath(__file__)) + "/input", "r")
+    .read()
+    .strip()
+    .split("\n")
+)
 parte_a(data)
 parte_b(data)

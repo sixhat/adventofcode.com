@@ -6,12 +6,12 @@ input = "demo"
 
 def parte_a(data):
     total = 0
-    print("Total parte A:\t", total)
+    print("-- Total parte A:\t", total)
 
 
 def parte_b(data):
     total = 0
-    print("Total parte B:\t", total)
+    print("-- Total parte B:\t", total)
 
 
 data: list[str] = (

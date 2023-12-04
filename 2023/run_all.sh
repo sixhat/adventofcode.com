@@ -26,3 +26,7 @@ python3 02/p02.py
 echo
 echo ==Problema 3 ==
 python3 03/p03.py
+
+echo
+echo ==Problema 4 ==
+python3 04/p04.py

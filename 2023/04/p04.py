@@ -23,13 +23,16 @@ def parte_a(data):
         in_winning = processa_linha(linha)
         if in_winning > 0:
             total += 2 ** (in_winning - 1)
-
     print("Total parte A:\t", total)
 
 
 def parte_b(data):
-    total = 0
-    print("Total parte B:\t", total)
+    running_ledger = [1 for x in data]
+    for i, linha in enumerate(data):
+        in_winning = processa_linha(linha)
+        for j in range(in_winning):
+            running_ledger[i + 1 + j] += running_ledger[i]
+    print("Total parte B:\t", sum(running_ledger))
 
 
 data: list[str] = (

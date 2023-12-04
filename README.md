@@ -9,8 +9,15 @@
 
 # Adventofcode.com tries
 
-My tries in [Advent of code](https://adventofcode.com/) with the objective of experimenting with different programming languages.
+My tries in [Advent of code](https://adventofcode.com/) with the objective of
+experimenting with different programming languages.
 
-This repo will not be updated often, and certainly not during the competitive part of the Advent of Code (read December).
+This repo will not be updated often, but during the competitive
+part of the Advent of Code (read December) you'll probably see more updates.
 
-The quality of code will probably not be as good as someone could expect as I'm using this as a learning exercise. Don't take this repo as authoritative.
+The quality of code will probably not be as good as someone could expect as I'm
+using this as a learning exercise. Don't take this repo as authoritative. 
+
+If you find something interesting or have any suggestion on how to improve
+something feel free to get in touch.
+

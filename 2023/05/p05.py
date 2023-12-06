@@ -35,7 +35,6 @@ class FromTo:
                 return o
         return o
 
-
 def parte_a(data):
     seeds = [int(x) for x in data[0].split()[1::]]
     locations = []

@@ -30,3 +30,11 @@ python3 03/p03.py
 echo
 echo ==Problema 4 ==
 python3 04/p04.py
+
+echo
+echo ==Problema 5 . part B very slow ==
+# python3 05/p05.py
+
+echo
+echo ==Problema 6 ==
+python3 06/p06.py

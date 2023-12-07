@@ -32,9 +32,13 @@ echo ==Problema 4 ==
 python3 04/p04.py
 
 echo
-echo ==Problema 5 . part B very slow ==
+echo ==Problema 5 . part B very slow == Need to re-write it for ranges processing
 # python3 05/p05.py
 
 echo
 echo ==Problema 6 ==
 python3 06/p06.py
+
+echo
+echo ==Problema 7 ==
+python3 07/p07.py

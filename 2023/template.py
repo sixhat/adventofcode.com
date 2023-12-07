@@ -1,5 +1,8 @@
 import os
 
+# https://adventofcode.com/2023
+# https://docs.python.org/3/
+
 input = "demo"
 # input = "input"
 
@@ -20,6 +23,8 @@ data: list[str] = (
     .strip()
     .split("\n")
 )
+
+print(data)
 
 parte_a(data)
 parte_b(data)

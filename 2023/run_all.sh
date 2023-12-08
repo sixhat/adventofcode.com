@@ -42,3 +42,7 @@ python3 06/p06.py
 echo
 echo ==Problema 7 ==
 python3 07/p07.py
+
+echo
+echo ==Problema 8 ==
+python3 08/p08.py

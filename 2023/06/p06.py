@@ -1,19 +1,7 @@
 import os
-import time
 
 # input = "demo"
 input = "input"
-
-start = 0
-
-
-def tic():
-    global start
-    start = time.time()
-
-
-def toc():
-    print(time.time() - start)
 
 
 def parte_a(data):
@@ -22,17 +10,10 @@ def parte_a(data):
     d = [int(x) for x in data[1].split()[1:]]
     dp = list(zip(t, d))
 
-    ways_to_beat: list[int] = []
     for t, d in dp:
-        n = 0
-        for i in range(t + 1):
-            if (t - i) * i > d:
-                n += 1
+        n = [(t - i) * i > d for i in range(t + 1)].count(True)
         if n > 0:
-            ways_to_beat.append(n)
-
-    for a in ways_to_beat:
-        total = total * a
+            total = total * n
 
     print("-- Total parte A:\t", total)
 
@@ -40,7 +21,7 @@ def parte_a(data):
 def parte_b(data: list[str]):
     t: int = int(data[0].split(":")[1].replace(" ", "").strip())
     d: int = int(data[1].split(":")[1].replace(" ", "").strip())
-    
+
     total = [(t - i) * i > d for i in range(t + 1)].count(True)
     print("-- Total parte B:\t", total)
 
@@ -52,7 +33,5 @@ data: list[str] = (
     .split("\n")
 )
 
-# parte_a(data)
-tic()
+parte_a(data)
 parte_b(data)
-toc()

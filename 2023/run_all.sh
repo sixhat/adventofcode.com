@@ -46,3 +46,9 @@ python3 07/p07.py
 echo
 echo ==Problema 8 ==
 python3 08/p08.py
+
+echo
+echo ==Problema 9 ==
+cd 09 || exit
+python3 p09.py 
+

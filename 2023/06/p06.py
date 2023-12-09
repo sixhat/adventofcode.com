@@ -21,7 +21,6 @@ def parte_a(data):
 def parte_b(data: list[str]):
     t: int = int(data[0].split(":")[1].replace(" ", "").strip())
     d: int = int(data[1].split(":")[1].replace(" ", "").strip())
-
     total = [(t - i) * i > d for i in range(t + 1)].count(True)
     print("-- Total parte B:\t", total)
 

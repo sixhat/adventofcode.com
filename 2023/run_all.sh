@@ -1,4 +1,5 @@
 #/bin/sh    
+set -e
 # figlet -c ADVENT OF CODE 2023
 cat << EOF
     _    ______     _______ _   _ _____    ___  _____    ____ ___  ____  _____ 
@@ -32,8 +33,10 @@ echo ==Problema 4 ==
 python3 04/p04.py
 
 echo
-echo ==Problema 5 . part B very slow == Need to re-write it for ranges processing
-# python3 05/p05.py
+echo ==Problema 5
+cd 05 || exit 
+python3 p05.py
+cd ..
 
 echo
 echo ==Problema 6 ==
@@ -51,4 +54,19 @@ echo
 echo ==Problema 9 ==
 cd 09 || exit
 python3 p09.py 
+cd ..
+
+echo
+echo ==Problema 10 ==
+cd 10 || exit
+python3 p10.py 
+cd ..
+
+echo
+echo ==Problema 11 ==
+cd 11 || exit
+python3 p11.py 
+cd ..
+
+
 

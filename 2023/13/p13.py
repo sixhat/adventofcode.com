@@ -84,3 +84,4 @@ for j, p in enumerate(data):
     total_B+=permute_smudge(j, p)
     
 print('-- total B:\t',total_B)
+ 

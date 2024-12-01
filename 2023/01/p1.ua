@@ -1,0 +1,2 @@
+Text ← &frab "input"
+Text

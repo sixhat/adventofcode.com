@@ -80,3 +80,14 @@ for p in part:
 total = [sum(x.values()) for x in A]            
 print('-- Parte A:\t', sum(total))
             
+# %%  parte B
+
+'''
+xmas = [(1..4000, 1..4000, 1..4000, 1..4000)]
+
+but after the application of each rule this can become a list of smaller 
+ranges, in the end, only some of those ranges will fall in As. 
+
+For those ranges that fall in As it is just a matter of #x * #m * #a * #s
+
+'''

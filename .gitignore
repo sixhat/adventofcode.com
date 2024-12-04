@@ -1,8 +1,0 @@
-.gitignore
-.*
-2023/01/a.out
-scratch
-__pycache__
-
-input
-demo

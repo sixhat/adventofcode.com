@@ -7,14 +7,14 @@ my $cols     = length( $haystack[0] ) - 2;
 
 my $num_xmas = 0;
 
-sub l {
+sub get_letter {
     return "Z" if ( $_[0] < 0 || $_[0] > $rows || $_[1] < 0 || $_[1] > $cols );
     return substr( $haystack[ $_[0] ], $_[1], 1 );
 }
 
 for my $row ( 0 .. $rows ) {
     for my $col ( 0 .. $cols ) {
-        my $letter = l( $row, $col );
+        my $letter = get_letter( $row, $col );
 
         if ( $letter eq 'X' ) {
 
@@ -28,49 +28,49 @@ for my $row ( 0 .. $rows ) {
             }
 
             # south
-            if (   ( l( $row + 1, $col ) eq 'M' )
-                && ( l( $row + 2, $col ) eq 'A' )
-                && ( l( $row + 3, $col ) eq 'S' ) )
+            if (   ( get_letter( $row + 1, $col ) eq 'M' )
+                && ( get_letter( $row + 2, $col ) eq 'A' )
+                && ( get_letter( $row + 3, $col ) eq 'S' ) )
             {
                 $num_xmas++;
             }
 
             # north
-            if (   ( l( $row - 1, $col ) eq 'M' )
-                && ( l( $row - 2, $col ) eq 'A' )
-                && ( l( $row - 3, $col ) eq 'S' ) )
+            if (   ( get_letter( $row - 1, $col ) eq 'M' )
+                && ( get_letter( $row - 2, $col ) eq 'A' )
+                && ( get_letter( $row - 3, $col ) eq 'S' ) )
             {
                 $num_xmas++;
             }
 
             # sw
-            if (   ( l( $row + 1, $col - 1 ) eq 'M' )
-                && ( l( $row + 2, $col - 2 ) eq 'A' )
-                && ( l( $row + 3, $col - 3 ) eq 'S' ) )
+            if (   ( get_letter( $row + 1, $col - 1 ) eq 'M' )
+                && ( get_letter( $row + 2, $col - 2 ) eq 'A' )
+                && ( get_letter( $row + 3, $col - 3 ) eq 'S' ) )
             {
                 $num_xmas++;
             }
 
             # se
-            if (   ( l( $row + 1, $col + 1 ) eq 'M' )
-                && ( l( $row + 2, $col + 2 ) eq 'A' )
-                && ( l( $row + 3, $col + 3 ) eq 'S' ) )
+            if (   ( get_letter( $row + 1, $col + 1 ) eq 'M' )
+                && ( get_letter( $row + 2, $col + 2 ) eq 'A' )
+                && ( get_letter( $row + 3, $col + 3 ) eq 'S' ) )
             {
                 $num_xmas++;
             }
 
             #nw
-            if (   ( l( $row - 1, $col - 1 ) eq 'M' )
-                && ( l( $row - 2, $col - 2 ) eq 'A' )
-                && ( l( $row - 3, $col - 3 ) eq 'S' ) )
+            if (   ( get_letter( $row - 1, $col - 1 ) eq 'M' )
+                && ( get_letter( $row - 2, $col - 2 ) eq 'A' )
+                && ( get_letter( $row - 3, $col - 3 ) eq 'S' ) )
             {
                 $num_xmas++;
             }
 
             #ne
-            if (   ( l( $row - 1, $col + 1 ) eq 'M' )
-                && ( l( $row - 2, $col + 2 ) eq 'A' )
-                && ( l( $row - 3, $col + 3 ) eq 'S' ) )
+            if (   ( get_letter( $row - 1, $col + 1 ) eq 'M' )
+                && ( get_letter( $row - 2, $col + 2 ) eq 'A' )
+                && ( get_letter( $row - 3, $col + 3 ) eq 'S' ) )
             {
                 $num_xmas++;
             }

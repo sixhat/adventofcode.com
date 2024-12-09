@@ -33,24 +33,24 @@ for my $i ( 0 .. $#pos ) {
 #   search first . from left and swap
 #   repeat until left=right;
 
-my $left  = 0;
-my $right = $#disk;
+my $left  = -1;
+my $right = $#disk + 1;
 
 while ( $right > $left ) {
     my $blkToMove;
     my $toLoc;
     do {
-        $blkToMove = $disk[$right];
         $right--;
+        $blkToMove = $disk[$right];
     } while ( $blkToMove eq '.' );
 
     do {
-        $toLoc = $disk[$left];
         $left++;
+        $toLoc = $disk[$left];
     } while ( $toLoc ne '.' );
 
     if ( $right >= $left ) {
-        @disk[ $left - 1, $right + 1 ] = @disk[ $right + 1, $left - 1 ];
+        @disk[ $left, $right ] = @disk[ $right, $left ];
     }
 }
 

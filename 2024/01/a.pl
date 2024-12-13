@@ -23,10 +23,10 @@ while ( my $line = <$in> ) {
 @vec1 = sort @vec1;
 @vec2 = sort @vec2;
 
-my $distancia  = 0;
+my $distance   = 0;
 my $similarity = 0;
 for my $i ( 0 .. $#vec1 ) {
-    $distancia += abs( $vec1[$i] - $vec2[$i] );
+    $distance += abs( $vec1[$i] - $vec2[$i] );
     my $v2cnt = 0;
     foreach (@vec2) {
         if ( $vec1[$i] == $_ ) {
@@ -36,6 +36,6 @@ for my $i ( 0 .. $#vec1 ) {
     $similarity += $vec1[$i] * $v2cnt;
 
 }
-print "Part 1: $distancia\n";
+print "Part 1: $distance\n";
 print "Part 2: $similarity\n";
 

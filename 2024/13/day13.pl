@@ -29,14 +29,12 @@ while ( my $line = <> ) {
     if ( $line =~
         m{Button[\N{SPACE}]+A:[\N{SPACE}]+X[+](\d+),[\N{SPACE}]+Y[+](\d+)}xms )
     {
-        $ax = $1;
-        $ay = $2;
+        ( $ax, $ay ) = ( $1, $2 );
     }
     if ( $line =~
         m{Button[\N{SPACE}]+B:[\N{SPACE}]+X[+](\d+),[\N{SPACE}]+Y[+](\d+)}xms )
     {
-        $bx = $1;
-        $by = $2;
+        ( $bx, $by ) = ( $1, $2 );
     }
     if ( $line =~ m{Prize:[\N{SPACE}]+X=(\d+),[\N{SPACE}]+Y=(\d+)}xms ) {
         if ($p2) {
@@ -44,8 +42,7 @@ while ( my $line = <> ) {
             $py = $2 + $PART2FACTOR;
         }
         else {
-            $px = $1;
-            $py = $2;
+            ( $px, $py ) = ( $1, $2 );
         }
         my $m = ( ( $py - $px * $ay / $ax ) / ( $by - $bx * $ay / $ax ) );
         my $n = ( ( $px - $bx * $m ) / $ax );

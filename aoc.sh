@@ -7,7 +7,7 @@ dia=$(date +%d)
 url="https://adventofcode.com/$ano/day/$dia"
 
 mkdir -p "$ano"
-mkdir -p "$dia"
+mkdir -p "$ano/$dia"
 touch "$ano/$dia/input"
 touch "$ano/$dia/demo"
 touch "$ano/$dia/day$dia.pl"

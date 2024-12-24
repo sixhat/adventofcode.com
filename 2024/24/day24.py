@@ -17,7 +17,7 @@ while repeat:
                 wire[c] = wire[a] * wire[b]
             elif op == "OR":
                 wire[c] = 0 if wire[a] + wire[b] == 0 else 1
-            elif (op) == "XOR":
+            elif op == "XOR":
                 wire[c] = 0 if wire[a] == wire[b] else 1
         else:
             repeat = True

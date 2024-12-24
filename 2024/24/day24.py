@@ -12,14 +12,13 @@ while repeat:
     repeat = False
     for line in logic:
         a, op, b, _, c = line.split()
-
         if a in wire.keys() and b in wire.keys():
             if op == "AND":
                 wire[c] = wire[a] * wire[b]
             elif op == "OR":
-                wire[c] = 0 if (wire[a] + wire[b]) == 0 else 1
+                wire[c] = 0 if wire[a] + wire[b] == 0 else 1
             elif (op) == "XOR":
-                wire[c] = 0 if (wire[a] == wire[b]) else 1
+                wire[c] = 0 if wire[a] == wire[b] else 1
         else:
             repeat = True
 

@@ -2,17 +2,10 @@
 use strict;
 use warnings;
 
-if ( $#ARGV + 1 != 1 ) {
-    print "> Enter input data file's name!!! \n";
-    exit;
-}
-
-open( my $in, "<", "$ARGV[0]" ) or die $!;
-
 my @vec1;
 my @vec2;
 
-while ( my $line = <$in> ) {
+while ( my $line = <> ) {
     unless ( $line =~ /^\s$/ ) {
         my @nums = split( ' ', $line );
         push( @vec1, $nums[0] );
@@ -38,4 +31,3 @@ for my $i ( 0 .. $#vec1 ) {
 }
 print "Part 1: $distance\n";
 print "Part 2: $similarity\n";
-

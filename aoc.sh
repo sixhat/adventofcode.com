@@ -3,8 +3,8 @@
 set -e
 ano=$(date +%Y)
 echo "Advent of Code $ano"
-dia=$(date +%d)
-url="https://adventofcode.com/$ano/"
+dia=$(date +%-d)
+url="https://adventofcode.com/$ano/day/$dia"
 
 #mkdir -p "$ano"
 #mkdir -p "$ano/$dia"
@@ -14,4 +14,5 @@ url="https://adventofcode.com/$ano/"
 #code "$ano"
 
 open "$url"
-
+cd $ano
+code .

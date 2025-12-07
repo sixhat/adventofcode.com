@@ -48,10 +48,11 @@ def day7():
     while line < len(data) - 1:
         new_beams = []
         for beam in beams:
-            if data[beam[0] + 1][beam[1]] == ".":
+            cell = data[beam[0] + 1][beam[1]]
+            if cell == ".":
                 data[beam[0] + 1][beam[1]] = "|"
                 new_beams.append([beam[0] + 1, beam[1]])
-            if data[beam[0] + 1][beam[1]] == "^":
+            elif cell == "^":
                 splits += 1
                 data[beam[0] + 1][beam[1] - 1] = "|"
                 data[beam[0] + 1][beam[1] + 1] = "|"

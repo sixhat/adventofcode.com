@@ -1,6 +1,7 @@
 def day7():
     """
     --- Day 7: Laboratories ---
+        https://github.com/sixhat/adventofcode.com/blob/main/2025/aoc2025-7-12.py
         https://adventofcode.com/2025/day/7
 
         A day of climbing up and down the Xmas Tree. Or is it down and up?

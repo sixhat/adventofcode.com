@@ -72,10 +72,10 @@ def day7():
     # this time we can trace our ways back and count the number of possibilities
 
     # Create a Zeros Matrix with the last line filled with 1s for "|"
-    soma = [[0] * len(data[0]) for _ in data]
+    path_count = [[0] * len(data[0]) for _ in data]
 
     for i in range(len(data[-1])):
-        soma[-1][i] = 1 if data[-1][i] == "|" else 0
+        path_count[-1][i] = 1 if data[-1][i] == "|" else 0
 
     # Let's climb the up the tree until we find a shooting Star
     line = len(data)-1
@@ -83,12 +83,12 @@ def day7():
         for i in range(len(data[line])):
             if data[line][i] == "|" and line < len(data) - 1:
                 if data[line + 1][i] == "^":
-                    soma[line][i] += soma[line + 1][i - 1] if i > 0 else 0
-                    soma[line][i] += soma[line + 1][i + 1] if i < len(data[line]) - 1 else 0
+                    path_count[line][i] += path_count[line + 1][i - 1] if i > 0 else 0
+                    path_count[line][i] += path_count[line + 1][i + 1] if i < len(data[line]) - 1 else 0
                 else:
-                    soma[line][i] += soma[line + 1][i]
+                    path_count[line][i] += path_count[line + 1][i]
             if data[line][i] == "S":
-                print("Part 2:", soma[line + 1][i])
+                print("Part 2:", path_count[line + 1][i])
         line -= 1
 
 

@@ -57,7 +57,7 @@ def day7():
                 data[beam[0] + 1][beam[1] + 1] = "|"
                 new_beams.append([beam[0] + 1, beam[1] - 1])
                 new_beams.append([beam[0] + 1, beam[1] + 1])
-        beams = new_beams[:]
+        beams = new_beams
         line += 1
     print_tree(data)
     print("Part 1:", splits)

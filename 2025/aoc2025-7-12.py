@@ -8,6 +8,8 @@ def day7():
         The trick was to get the best representation of what was going on.
         A pencil and paper drawing helped to clear the mechanism of 
         quantum tachyon manifolds. Post-modern physics is clearly kids play.
+
+        tags: #AdventOfCode #python #pragrmming #xmas #coding
     """
     with open("day7.txt") as f:
         data = f.read().rstrip("\n").split("\n")

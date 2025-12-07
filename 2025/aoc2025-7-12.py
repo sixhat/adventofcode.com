@@ -1,15 +1,16 @@
 def day7():
     """
     --- Day 7: Laboratories ---
-        https://github.com/sixhat/adventofcode.com/blob/main/2025/aoc2025-7-12.py
-        https://adventofcode.com/2025/day/7
+    
+    https://github.com/sixhat/adventofcode.com/blob/main/2025/aoc2025-7-12.py
+    https://adventofcode.com/2025/day/7
 
-        A day of climbing up and down the Xmas Tree. Or is it down and up?
-        The trick was to get the best representation of what was going on.
-        A pencil and paper drawing helped to clear the mechanism of
-        quantum tachyon manifolds. Post-modern physics is clearly kids play.
+    A day of climbing up and down the Xmas Tree. Or is it down and up?
+    The trick was to get the best representation of what was going on.
+    A pencil and paper drawing helped to clear the mechanism of
+    quantum tachyon manifolds. Post-modern physics is clearly kids play.
 
-        tags: #AdventOfCode #python #pragrmming #xmas #coding
+    tags: #AdventOfCode #python #pragrmming #xmas #coding
     """
     with open("day7.txt") as f:
         data = f.read().rstrip("\n").split("\n")
@@ -54,10 +55,12 @@ def day7():
                 new_beams.append([beam[0] + 1, beam[1]])
             elif cell == "^":
                 splits += 1
-                data[beam[0] + 1][beam[1] - 1] = "|"
-                data[beam[0] + 1][beam[1] + 1] = "|"
-                new_beams.append([beam[0] + 1, beam[1] - 1])
-                new_beams.append([beam[0] + 1, beam[1] + 1])
+                if beam[1] - 1 >= 0:
+                    data[beam[0] + 1][beam[1] - 1] = "|"
+                    new_beams.append([beam[0] + 1, beam[1] - 1])
+                if beam[1] + 1 < len(data[line]):
+                    data[beam[0] + 1][beam[1] + 1] = "|"
+                    new_beams.append([beam[0] + 1, beam[1] + 1])
         beams = new_beams
         line += 1
     print_tree(data)
@@ -71,11 +74,11 @@ def day7():
     # Create a Zeros Matrix with the last line filled with 1s for "|"
     soma = [[0] * len(data[0]) for _ in data]
 
-    for i in range(len(data[line])):
-        if data[line][i] == "|":
-            soma[line][i] = 1
+    for i in range(len(data[-1])):
+        soma[-1][i] = 1 if data[-1][i] == "|" else 0
 
     # Let's climb the up the tree until we find a shooting Star
+    line = len(data)-1
     while line >= 0:
         for i in range(len(data[line])):
             if data[line][i] == "|" and line < len(data) - 1:

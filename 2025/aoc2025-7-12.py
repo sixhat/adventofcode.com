@@ -79,8 +79,8 @@ def day7():
     # Let's climb the up the tree until we find a shooting Star
     while line >= 0:
         for i in range(len(data[line])):
-            if data[line][i] == "|":
-                y = (line + 1) % len(data)  # Trick to go around the tree
+            if data[line][i] == "|" and line < len(data)-1:
+                y = line + 1 
                 if data[y][i] == "^":
                     soma[line][i] += soma[y][i - 1] if i > 0 else 0
                     soma[line][i] += soma[y][i + 1] if i < len(data[line]) - 1 else 0

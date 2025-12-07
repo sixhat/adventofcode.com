@@ -82,12 +82,11 @@ def day7():
     while line >= 0:
         for i in range(len(data[line])):
             if data[line][i] == "|" and line < len(data) - 1:
-                y = line + 1
-                if data[y][i] == "^":
-                    soma[line][i] += soma[y][i - 1] if i > 0 else 0
-                    soma[line][i] += soma[y][i + 1] if i < len(data[line]) - 1 else 0
+                if data[line + 1][i] == "^":
+                    soma[line][i] += soma[line + 1][i - 1] if i > 0 else 0
+                    soma[line][i] += soma[line + 1][i + 1] if i < len(data[line]) - 1 else 0
                 else:
-                    soma[line][i] += soma[y][i]
+                    soma[line][i] += soma[line + 1][i]
             if data[line][i] == "S":
                 print("Part 2:", soma[line + 1][i])
         line -= 1

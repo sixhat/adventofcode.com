@@ -69,7 +69,7 @@ def day7():
     # this time we can trace our ways back and count the number of possibilities
 
     # Create a Zeros Matrix with the last line filled with 1s for "|"
-    soma = [[0]* len(data[0]) for _ in data]
+    soma = [[0] * len(data[0]) for _ in data]
 
     for i in range(len(data[line])):
         if data[line][i] == "|":

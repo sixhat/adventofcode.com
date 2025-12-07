@@ -6,7 +6,7 @@ def day7():
 
         A day of climbing up and down the Xmas Tree. Or is it down and up?
         The trick was to get the best representation of what was going on.
-        A pencil and paper drawing helped to clear the mechanism of 
+        A pencil and paper drawing helped to clear the mechanism of
         quantum tachyon manifolds. Post-modern physics is clearly kids play.
 
         tags: #AdventOfCode #python #pragrmming #xmas #coding
@@ -36,7 +36,6 @@ def day7():
     data = [list(row) for row in data]
     beams = [[0, data[0].index("S")]]
 
-     
     def print_tree(tree):
         """
         Print the XMAS-Tree
@@ -80,7 +79,7 @@ def day7():
     while line >= 0:
         for i in range(len(data[line])):
             if data[line][i] == "|":
-                y = (line + 1) % len(data) # Trick to go around the tree 
+                y = (line + 1) % len(data)  # Trick to go around the tree
                 if data[y][i] == "^":
                     soma[line][i] += soma[y][i - 1] if i > 0 else 0
                     soma[line][i] += soma[y][i + 1] if i < len(data[line]) - 1 else 0

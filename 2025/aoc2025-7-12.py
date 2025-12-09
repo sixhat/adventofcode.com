@@ -1,7 +1,7 @@
 def day7():
     """
     --- Day 7: Laboratories ---
-    
+
     https://github.com/sixhat/adventofcode.com/blob/main/2025/aoc2025-7-12.py
     https://adventofcode.com/2025/day/7
 
@@ -78,13 +78,15 @@ def day7():
         path_count[-1][i] = 1 if data[-1][i] == "|" else 0
 
     # Let's climb the up the tree until we find a shooting Star
-    line = len(data)-1
+    line = len(data) - 1
     while line >= 0:
         for i in range(len(data[line])):
             if data[line][i] == "|" and line < len(data) - 1:
                 if data[line + 1][i] == "^":
                     path_count[line][i] += path_count[line + 1][i - 1] if i > 0 else 0
-                    path_count[line][i] += path_count[line + 1][i + 1] if i < len(data[line]) - 1 else 0
+                    path_count[line][i] += (
+                        path_count[line + 1][i + 1] if i < len(data[line]) - 1 else 0
+                    )
                 else:
                     path_count[line][i] += path_count[line + 1][i]
             if data[line][i] == "S":
@@ -92,4 +94,4 @@ def day7():
         line -= 1
 
 
-day7()
+# day7()

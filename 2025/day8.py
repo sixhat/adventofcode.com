@@ -92,4 +92,3 @@ def day8_solve_1(junctions):
 data = day8_data()
 # print((data))
 day8_solve_1(data)
-# %%

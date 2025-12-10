@@ -21,17 +21,21 @@ function Kruskal(Graph G) is
 """
 
 
-@dataclass(order=True, frozen=True)
+@dataclass(frozen=True)
 class Junction:
     x: int
     y: int
     z: int
 
 
-@dataclass(order=True)
+@dataclass
 class Edge:
     distance_sq: int
     nodes: List[Junction]
+
+    # Could have used (order=True in the dataclass, but this makes it twice faster)
+    def __lt__(self, other):
+        return self.distance_sq < other.distance_sq
 
 
 def dist_sq(a: Junction, b: Junction) -> int:
@@ -51,6 +55,7 @@ def calc_edges(junctions: List[Junction]) -> List[Edge]:
             d = dist_sq(junctions[i], junctions[j])
             e = Edge(d, [junctions[i], junctions[j]])
             edges.append(e)
+
     return sorted(edges)
 
 
@@ -66,14 +71,16 @@ def day8_solve_kruskal(junctions, part=-1):
             F := F ∪ { {u, v} }
             UNION(FIND-SET(u), FIND-SET(v))
     return F
+
+    > This implementation is not fast, as it should 
+    > have a DSU (Disjoint Set Union) implementation to make it faster
     """
     edges = calc_edges(junctions)
     if part == 1:
         edges = edges[:1000]
     F = [[j] for j in junctions]
     for k, e in enumerate(edges):
-        a = e.nodes[0]
-        b = e.nodes[1]
+        a, b = e.nodes
         ia = -1
         ib = -1
         for i in range(len(F)):

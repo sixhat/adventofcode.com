@@ -1,10 +1,22 @@
-# %% --- Day 8: Playground ---
 from pathlib import Path
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import List
 """
 What do you get when the Travelling Salesman Problem doesn't have
 enough roads to visit every city? Donkey mail?
+Well this is a MST finding algorithm by
+Kruskal (https://en.wikipedia.org/wiki/Kruskal%27s_algorithm)
+
+function Kruskal(Graph G) is
+    F:= ∅
+    for each v in G.Vertices do
+        MAKE-SET(v)
+
+    for each {u, v} in G.Edges ordered by increasing weight({u, v}) do
+        if FIND-SET(u) ≠ FIND-SET(v) then
+            F := F ∪ { {u, v} }
+            UNION(FIND-SET(u), FIND-SET(v))
+    return F
 """
 
 @dataclass(order=True, frozen=True)
@@ -21,12 +33,8 @@ class Edge:
 def dist_sq(a: Junction, b: Junction) -> int:
     return (a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2
 
-def print_distances(edges: List[Edge]):
-    for e in edges:
-        print(e)
-
-def day8_data():
-    txt = Path("day8.txt").read_text().strip().splitlines()
+def day8_data(fich):
+    txt = Path(fich).read_text().strip().splitlines()
     data = [Junction(*map(int, a)) for a in [line.split(",") for line in txt]]
     return data
 
@@ -39,56 +47,46 @@ def calc_edges(junctions: List) -> Edge:
             edges.append(e)
     return sorted(edges)
 
-def merge_components(a: List, b: List) -> List:
-    return list(set(b).union(set(a)))
+def day8_solve_kruskal(junctions, part=-1):
+    """
+    function Kruskal(Graph G) is
+    F:= ∅
+    for each v in G.Vertices do
+        MAKE-SET(v)
 
-def in_graph(a, g):
-    for c in g:
-        if a in c:
-            return c
-    return False
-
-def day8_solve_1(junctions):
+    for each {u, v} in G.Edges ordered by increasing weight({u, v}) do
+        if FIND-SET(u) ≠ FIND-SET(v) then
+            F := F ∪ { {u, v} }
+            UNION(FIND-SET(u), FIND-SET(v))
+    return F
+    """
     edges = calc_edges(junctions)
-    set_edges = [set(e.nodes) for e in edges[:1000]]
-    t = 0
-    while t != -1:
-        t = 0
-        ns = []
-        rm = []
-        # print(set_edges)
-        for i, a in enumerate(set_edges):
-            for j in range(i + 1, len(set_edges)):
-                b = set_edges[j]
-                if a.intersection(b):
-                    t += 1
-                    if a not in rm:
-                        rm.append(a)
-                    if b not in rm:
-                        rm.append(b)
-                    u = a.union(b)
-                    if u not in ns: 
-                        ns.append(u)
-                    break
-                    
-        # print("\n\n\n", t)
-        # print("RM",rm)
-        # print("NS",ns)
-        # print("-----")
-        for r in rm:
-            # print(r)
-            if r in set_edges:
-                set_edges.remove(r)
-        set_edges.extend(ns)
+    if part == 1:
+        edges = edges[:1000]
+    F = [[j] for j in junctions]
+    for k,e in enumerate(edges):
+        a = e.nodes[0]
+        b = e.nodes[1]
+        ia = -1
+        ib = -1
+        for i in range(len(F)):
+            f = F[i]
+            if a in f:
+                ia = i
+            if b in f:
+                ib = i
+            if ib > -1 and ia > -1:
+                break
+        if ia != ib and ia > -1 and ib > -1:
+            nl = list(set(F[ia]).union(set(F[ib])))
+            F.append(nl)
+            F.pop(max(ia,ib))
+            F.pop(min(ia,ib))
+        if len(F)==1:
+            return e.nodes[0].x * e.nodes[1].x
+    nn = sorted([len(x) for x in F], reverse=True)
+    return nn[0]*nn[1]*nn[2]
 
-        if t == 0:
-            break   
-
-
-    m = sorted([len(el) for el in set_edges], reverse=True)
-    print(m[0]*m[1]*m[2])        
-    
-
-data = day8_data()
-# print((data))
-day8_solve_1(data)
+data = day8_data("day8.txt")
+print("Parte 1:", day8_solve_kruskal(data,1))
+print("Parte 2:", day8_solve_kruskal(data))

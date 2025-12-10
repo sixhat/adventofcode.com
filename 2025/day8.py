@@ -1,6 +1,7 @@
 from pathlib import Path
 from dataclasses import dataclass
 from typing import List
+
 """
 What do you get when the Travelling Salesman Problem doesn't have
 enough roads to visit every city? Donkey mail?
@@ -19,26 +20,31 @@ function Kruskal(Graph G) is
     return F
 """
 
+
 @dataclass(order=True, frozen=True)
 class Junction:
     x: int
     y: int
     z: int
 
+
 @dataclass(order=True)
 class Edge:
     distance_sq: int
     nodes: List[Junction]
 
+
 def dist_sq(a: Junction, b: Junction) -> int:
     return (a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2
 
+
 def day8_data(fich):
     txt = Path(fich).read_text().strip().splitlines()
-    data = [Junction(*map(int, a)) for a in [line.split(",") for line in txt]]
+    data = [Junction(*map(int, line.split(","))) for line in txt]
     return data
 
-def calc_edges(junctions: List) -> Edge:
+
+def calc_edges(junctions: List[Junction]) -> List[Edge]:
     edges = []
     for i in range(len(junctions)):
         for j in range(i + 1, len(junctions)):
@@ -46,6 +52,7 @@ def calc_edges(junctions: List) -> Edge:
             e = Edge(d, [junctions[i], junctions[j]])
             edges.append(e)
     return sorted(edges)
+
 
 def day8_solve_kruskal(junctions, part=-1):
     """
@@ -64,7 +71,7 @@ def day8_solve_kruskal(junctions, part=-1):
     if part == 1:
         edges = edges[:1000]
     F = [[j] for j in junctions]
-    for k,e in enumerate(edges):
+    for k, e in enumerate(edges):
         a = e.nodes[0]
         b = e.nodes[1]
         ia = -1
@@ -80,13 +87,14 @@ def day8_solve_kruskal(junctions, part=-1):
         if ia != ib and ia > -1 and ib > -1:
             nl = list(set(F[ia]).union(set(F[ib])))
             F.append(nl)
-            F.pop(max(ia,ib))
-            F.pop(min(ia,ib))
-        if len(F)==1:
+            F.pop(max(ia, ib))
+            F.pop(min(ia, ib))
+        if len(F) == 1:
             return e.nodes[0].x * e.nodes[1].x
     nn = sorted([len(x) for x in F], reverse=True)
-    return nn[0]*nn[1]*nn[2]
+    return nn[0] * nn[1] * nn[2]
+
 
 data = day8_data("day8.txt")
-print("Parte 1:", day8_solve_kruskal(data,1))
+print("Parte 1:", day8_solve_kruskal(data, 1))
 print("Parte 2:", day8_solve_kruskal(data))

@@ -17,8 +17,8 @@ data = """
 7,3
 """.strip().split("\n")
 
-with open("day9.txt") as f:
-   data = f.read().strip().split("\n")
+# with open("day9.txt") as f:
+#    data = f.read().strip().split("\n")
 
 data = [Point(*list(map(int,b))) for b in [a.split(",") for a in data]]
 

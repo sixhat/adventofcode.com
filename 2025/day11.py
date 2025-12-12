@@ -39,7 +39,7 @@ print("Part 1:", path_to("you", data))
 
 
 def path_two(node, data, dac, fft, memo: dict = None):
-    if memo is None or not isinstance(memo, dict):
+    if memo is None:
         memo = {}
 
     state_key = (node, dac, fft)

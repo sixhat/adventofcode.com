@@ -65,4 +65,4 @@ def path_two(node, data, dac, fft, memo: dict = None):
     return total_paths
 
 
-print("Part 2:", path_two("svr", data, False, False, {}))
+print("Part 2:", path_two("svr", data, False, False))

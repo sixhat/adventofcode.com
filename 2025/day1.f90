@@ -13,10 +13,10 @@ program day1
                 delta = valor * merge(1, -1, line(1:1)=='R')
                 
                 full = abs(delta)/ MY_MOD
-                rem = MOD(delta, MY_MOD)
+                rem = mod(delta, MY_MOD)
                 part2 = part2 + full + merge(1,0, (pos + rem >= MY_MOD) .or. &
                         (pos + rem <= 0 .and. pos /= 0))
-                pos = MOD(pos + delta, MY_MOD) 
+                pos = mod(pos + delta, MY_MOD) 
                 if (pos < 0) pos = pos + MY_MOD
                 if (pos == 0 ) part1 = part1 + 1
         end do

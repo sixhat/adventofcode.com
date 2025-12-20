@@ -58,7 +58,7 @@ contains
                         is_repeating_digits_twice = .false.
                         return
                 end if
-                s_n2 = s_n/2
+                s_n2 = s_n / 2
 
                 do i = s_n2 + 1, s_n
                         if (str(i:i) /= str(i - s_n2:i - s_n2)) then
@@ -82,7 +82,7 @@ contains
                 write (str, '(I0)') n
                 s_n = len_trim(str)
 
-                do i = 1, s_n/2
+                do i = 1, s_n / 2
                         if (modulo(s_n, i) /= 0) cycle
                         ok = .true.
                         do j = i + 1, s_n

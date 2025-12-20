@@ -13,9 +13,9 @@ program day1
                 if (ios /= 0) exit
 
                 read (line(2:), *) valor
-                delta = valor*merge(1, -1, line(1:1) == 'R')
+                delta = valor * merge(1, -1, line(1:1) == 'R')
 
-                full = abs(delta)/MY_MOD
+                full = abs(delta) / MY_MOD
                 rem = mod(delta, MY_MOD)
                 part2 = part2 + full + merge(1, 0, (pos + rem >= MY_MOD) .or. &
                                              (pos + rem <= 0 .and. pos /= 0))
